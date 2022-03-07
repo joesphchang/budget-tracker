@@ -1,31 +1,30 @@
 import React from 'react';
-import Remaining from './components/Remaining/Remaining';
-import Budget from './components/Budget/Budget';
-import ExpenseTotal from './components/ExpenseTotal/ExpenseTotal';
-import ExpenseList from './components/ExpenseList/ExpenseList';
+import { Button, Stack } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import BudgetCard from './components/BudgetCard';
 
 function App() {
 	return (
-		<div className='container'>
-			<h1 className='mt-3'>Budget Planner</h1>
-			<div className='row mt-3'>
-				<div className='col-sm'>
-					<Budget />
-				</div>
-				<div className='col-sm'>
-					<Remaining />
-				</div>
-				<div className='col-sm'>
-					<ExpenseTotal />
-				</div>
-				<h3 className='mt-3'>Expenses</h3>
-				<div className='row mt-3'>
-					<div className='col-sm'>
-						<ExpenseList />
-					</div>
-				</div>
+		<Container>
+			<Stack direction='horizontal' gap='2' className='mb-4'>
+				<h1 className='me-auto'>Budgets</h1>
+				<Button variant='primary'>Add Budget</Button>
+				<Button variant='outline-primary'>Add Expense</Button>
+			</Stack>
+			<div
+				style={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+					gap: '1rem',
+					alignItems: 'flex-start',
+				}}>
+				<BudgetCard
+					gray
+					name='Entertainment'
+					amount={200}
+					max={1000}></BudgetCard>
 			</div>
-		</div>
+		</Container>
 	);
 }
 
